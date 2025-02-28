@@ -1,0 +1,26 @@
+# USERS
+INT(?)  userID
+TEXT    userName 
+TEXT    userPass
+TEXT    userEmail
+INT(?)  blockedDevs
+INT(?)  followedDevs
+INT(?)  blockedGames
+INT(?)  followedGames
+
+# DEVS
+INT(?)  devID
+TEXT    devName
+
+# GAMES
+INT(?)  gameID
+TEXT    gameName
+???     genres
+INT(?)  devID
+(???)   gameImage
+
+# NEWS
+INT(?)  newsID
+TEXT    newsTitle
+TEXT    newsContent
+INT(?)  gameID

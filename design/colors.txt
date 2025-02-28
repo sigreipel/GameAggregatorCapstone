@@ -1,0 +1,34 @@
+--lapis-lazuli: #05648aff;
+--persimmon: #e55812ff;
+--canary: #ffe51fff;
+
+/* CSS HSL */
+--lapis-lazuli: hsla(197, 93%, 28%, 1);
+--persimmon: hsla(20, 85%, 48%, 1);
+--canary: hsla(53, 100%, 56%, 1);
+
+/* SCSS HEX */
+$lapis-lazuli: #05648aff;
+$persimmon: #e55812ff;
+$canary: #ffe51fff;
+
+/* SCSS HSL */
+$lapis-lazuli: hsla(197, 93%, 28%, 1);
+$persimmon: hsla(20, 85%, 48%, 1);
+$canary: hsla(53, 100%, 56%, 1);
+
+/* SCSS RGB */
+$lapis-lazuli: rgba(5, 100, 138, 1);
+$persimmon: rgba(229, 88, 18, 1);
+$canary: rgba(255, 229, 31, 1);
+
+/* SCSS Gradient */
+$gradient-top: linear-gradient(0deg, #05648aff, #e55812ff, #ffe51fff);
+$gradient-right: linear-gradient(90deg, #05648aff, #e55812ff, #ffe51fff);
+$gradient-bottom: linear-gradient(180deg, #05648aff, #e55812ff, #ffe51fff);
+$gradient-left: linear-gradient(270deg, #05648aff, #e55812ff, #ffe51fff);
+$gradient-top-right: linear-gradient(45deg, #05648aff, #e55812ff, #ffe51fff);
+$gradient-bottom-right: linear-gradient(135deg, #05648aff, #e55812ff, #ffe51fff);
+$gradient-top-left: linear-gradient(225deg, #05648aff, #e55812ff, #ffe51fff);
+$gradient-bottom-left: linear-gradient(315deg, #05648aff, #e55812ff, #ffe51fff);
+$gradient-radial: radial-gradient(#05648aff, #e55812ff, #ffe51fff);
