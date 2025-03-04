@@ -7,7 +7,7 @@ cur = con.cursor()
 
 cur.execute("""
     CREATE TABLE USERS(
-        userID INTEGER PRIMARY KEY, 
+        userID INTEGER PRIMARY KEY AUTOINCREMENT, 
         userName TEXT, 
         userPass TEXT, 
         userEmail TEXT, 
@@ -49,13 +49,12 @@ cur.execute("""
 
 # TODO figure out how to get arrays into database. Will I need another table? for blocks/follows/genres
 #TODO split devs/genres/etc before making tables
-data = list(csv.reader(open('game_info.csv')))
+data = list(csv.reader(open('game_info.csv')))[1:]
 
-developersData = set(row[17] for row in data)  # Unique developer names
+developersData = set(row[17] for row in data if row[17].strip())  # Unique dev names, Exclude empty values
 # devID, devName
 for dev in developersData:
     cur.execute("INSERT OR IGNORE INTO DEVS (devName) VALUES (?)", (dev,))
-cur.execute("SELECT devID, devName FROM DEVS")
 devID_map = {name: devID for devID, name in cur.fetchall()}
 
 
@@ -65,22 +64,19 @@ gamesData = [(row[2], row[18], devID_map.get(row[17], None), "placeholder") for 
 cur.executemany("INSERT INTO GAMES (gameName, genres, devID, gameImage) VALUES (?,?,?,?)", gamesData)
 
 #TODO make this real
-cur.execute("""
-    INSERT INTO USERS VALUES
-        (111111111, 'firstuser', 'pass1hash', 'user1@email.tld', 1, 2, 1, 2),
-        (222222222, 'seconduser', 'pass2hash', 'user2@email.tld', 2, 1, 2, 1)
-""")
+userData = [('testuser1', 'pass1hash', 'user1@email.tld', 1, 2, 1, 2,)]
+cur.executemany("INSERT INTO USERS (userName, userPass, userEmail, blockedDevs, followedDevs, blockedGames, followedGames) VALUES (?,?,?,?,?,?,?)", userData)
 
 
 cur.execute("SELECT gameID, gameName FROM GAMES")
 gameID_map = {name: gameID for gameID, name in cur.fetchall()}
 
 newsData = [
-    (100000001, 'newsOne', 'the first game has news!', gameID_map.get("First Game Name", None)),
-    (200000002, 'newsTwo', 'the second game has news!', gameID_map.get("Second Game Name", None))
+    ('newsOne', 'the first game has news!', gameID_map.get("First Game Name", None)),
+    ('newsTwo', 'the second game has news!', gameID_map.get("Second Game Name", None))
 ]
 
-cur.executemany("INSERT INTO NEWS (newsID, newsTitle, newsContent, gameID) VALUES (?,?,?,?)", newsData)
+cur.executemany("INSERT INTO NEWS (newsTitle, newsContent, gameID) VALUES (?,?,?)", newsData)
 
 
 con.commit()
