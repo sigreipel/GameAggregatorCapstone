@@ -1,10 +1,46 @@
 
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
 h1 {
     text-align: center;
     color: #05648aff;
 }
 
-.nav {
+/* nav bar stuff */
+nav {
     background-color: #05648aff;
-    text-align: left;
+    overflow: hidden;
+    height: 100px;
+    font-family: 'Open Sans', sans-serif;
 }
+
+nav ul {
+    list-style-type: none;
+    margin: 1%;
+}
+
+nav ul li {
+    float: left;
+}
+
+nav ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: medium;
+}
+
+nav ul li a:hover {
+    background-color: rgb(4, 58, 80);
+}
+
+nav ul li a.active {
+    background-color: #e55812ff;
+}
+/* end navbar stuff */
