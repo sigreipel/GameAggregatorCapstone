@@ -1,46 +1,95 @@
 # https://docs.python.org/3/library/sqlite3.html
 import sqlite3
+import csv
 
 con = sqlite3.connect("placeholder.db")
 cur = con.cursor()
 
-cur.execute("CREATE TABLE USERS(userID, userName, userPass, userEmail, blockedDevs, followedDevs, blockedGames, followedGames)")
-cur.execute("CREATE TABLE DEVS(devID, devName)")
-cur.execute("CREATE TABLE GAMES(gameID, gameName, genres, devID, gameImage)")
-cur.execute("CREATE TABLE NEWS(newsID, newsTitle, newsContent, gameID)")
+cur.execute("""
+    CREATE TABLE USERS(
+        userID INTEGER PRIMARY KEY, 
+        userName TEXT, 
+        userPass TEXT, 
+        userEmail TEXT, 
+        blockedDevs TEXT,  -- Store as JSON string or separate table
+        followedDevs TEXT, -- Store as JSON string or separate table
+        blockedGames TEXT, -- Store as JSON string or separate table
+        followedGames TEXT -- Store as JSON string or separate table
+    )
+""")
+
+cur.execute("""
+    CREATE TABLE DEVS(
+        devID INTEGER PRIMARY KEY AUTOINCREMENT, 
+        devName TEXT UNIQUE
+    )
+""")
+
+cur.execute("""
+    CREATE TABLE GAMES(
+        gameID INTEGER PRIMARY KEY AUTOINCREMENT, 
+        gameName TEXT, 
+        genres TEXT, 
+        devID INTEGER,
+        gameImage TEXT,
+        FOREIGN KEY (devID) REFERENCES DEVS(devID)
+    )
+""")
+
+cur.execute("""
+    CREATE TABLE NEWS(
+        newsID INTEGER PRIMARY KEY AUTOINCREMENT, 
+        newsTitle TEXT, 
+        newsContent TEXT, 
+        gameID INTEGER,
+        FOREIGN KEY (gameID) REFERENCES GAMES(gameID)
+    )
+""")
+
 
 # TODO figure out how to get arrays into database. Will I need another table? for blocks/follows/genres
+#TODO split devs/genres/etc before making tables
+data = list(csv.reader(open('game_info.csv')))
+
+developersData = set(row[17] for row in data)  # Unique developer names
+# devID, devName
+for dev in developersData:
+    cur.execute("INSERT OR IGNORE INTO DEVS (devName) VALUES (?)", (dev,))
+cur.execute("SELECT devID, devName FROM DEVS")
+devID_map = {name: devID for devID, name in cur.fetchall()}
+
+
+gamesData = [(row[2], row[18], devID_map.get(row[17], None), "placeholder") for row in data]
+# gameID, gameName, genres, devID, gameImage
+#TODO figure out genres
+cur.executemany("INSERT INTO GAMES (gameName, genres, devID, gameImage) VALUES (?,?,?,?)", gamesData)
+
+#TODO make this real
 cur.execute("""
     INSERT INTO USERS VALUES
-        (111111111, 'firstuser', 'pass1hash', 'user1@email.tld', 101010101, 202020202, 100100100, 200200200),
-        (222222222, 'seconduser', 'pass2hash', 'user2@email.tld', 202020202, 101010101, 200200200, 100100100)
+        (111111111, 'firstuser', 'pass1hash', 'user1@email.tld', 1, 2, 1, 2),
+        (222222222, 'seconduser', 'pass2hash', 'user2@email.tld', 2, 1, 2, 1)
 """)
 
-cur.execute("""
-    INSERT INTO DEVS VALUES
-        (101010101, 'devZero'),
-        (202020202, 'devOne')
-""")
 
-cur.execute("""
-    INSERT INTO GAMES VALUES
-        (100100100, 'gameZero', 'horror', 101010101, 'game1img'),
-        (200200200, 'gameOne', 'jrpg', 202020202, 'game2img')
-""")
+cur.execute("SELECT gameID, gameName FROM GAMES")
+gameID_map = {name: gameID for gameID, name in cur.fetchall()}
 
-cur.execute("""
-    INSERT INTO NEWS VALUES
-        (100000001, 'newsOne', 'the first game has news!', 100100100),
-        (200000002, 'newsTwo', 'the second game has news!', 200200200)
-""")
+newsData = [
+    (100000001, 'newsOne', 'the first game has news!', gameID_map.get("First Game Name", None)),
+    (200000002, 'newsTwo', 'the second game has news!', gameID_map.get("Second Game Name", None))
+]
+
+cur.executemany("INSERT INTO NEWS (newsID, newsTitle, newsContent, gameID) VALUES (?,?,?,?)", newsData)
+
 
 con.commit()
 
-res = cur.execute("SELECT userPass FROM USERS")
-print(res.fetchall())
-res = cur.execute("SELECT devID FROM DEVS")
-print(res.fetchall())
-res = cur.execute("SELECT gameName FROM GAMES")
-print(res.fetchall())
-res = cur.execute("SELECT newsContent FROM NEWS")
-print(res.fetchall())
+res = cur.execute("SELECT * FROM DEVS")
+print("Developers:", res.fetchall())
+
+res = cur.execute("SELECT * FROM GAMES")
+print("Games:", res.fetchall())
+
+res = cur.execute("SELECT * FROM NEWS")
+print("News:", res.fetchall())
