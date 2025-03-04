@@ -1,0 +1,47 @@
+/* initial style sheet for css stuff */
+
+/* containers */
+container {
+    background-color: white;
+}
+
+container2 {
+    background-color: #05648aff;
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: #05648aff;
+}
+
+/* nav bar */
+.topnav a {
+    float: left;
+    display: block;
+    color: #e55812ff;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* headers */ 
+h1 {
+    color: #05648aff;
+}
+
+h2 {
+    color: #05648aff;
+}
+
+h3 {
+    color: #05648aff;
+}
+
+/* text */
+p {
+    color: #05648aff;
+}
+
+body {
+    background-color: #05648aff;
+}
