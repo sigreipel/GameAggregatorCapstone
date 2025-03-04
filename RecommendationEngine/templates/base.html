@@ -6,6 +6,10 @@
   <meta charset="utf-8">
   <title>{% block title %}Django Auth Tutorial{% endblock %}</title>
   <link rel="icon" href="data:,">
+
+  <!-- Link to the CSS stylesheet -->
+  {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
   <nav>
     <ul>
         <li><a href="/">Home</a></li>

@@ -1,6 +1,10 @@
 
-
 h1 {
     text-align: center;
     color: #05648aff;
+}
+
+.nav {
+    background-color: #05648aff;
+    text-align: left;
 }
