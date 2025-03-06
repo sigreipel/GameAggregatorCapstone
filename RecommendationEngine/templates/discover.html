@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Discover{% endblock %}
+
+{% block content %}
+
+<style>
+    form {
+      display: flex;
+      justify-content: center;
+      margin-top: 50px;
+    }
+  
+    input[type="text"] {
+      padding: 8px;
+      font-size: 16px;
+      width: 200px;
+    }
+  
+    button {
+      padding: 8px 16px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+  
+  <form action="/search" method="get">
+    <input type="text" name="query" placeholder="Search..." required>
+    <button type="submit">Search</button>
+  </form>
+  <br>
+  
+<h1> Here's where we'll put the fake article and stuff </h1>
+
+
+{% endblock %}
