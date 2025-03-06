@@ -5,19 +5,12 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-<p>Hi {{ user.username }}!</p>
-<p><form action="{% url 'password_change' %}" method="post">
-    {% csrf_token %}
-    <button type="submit">Change Password</button>
-  </form></p>
-<form action="{% url 'logout' %}" method="post">
-  {% csrf_token %}
-  <button type="submit">Log Out</button>
-</form>
+<br>
+<br>
+<h2>Hi {{ user.username }}!</h2>
 {% else %}
-<p>You are not logged in</p>
-<p><a href="{% url 'password_reset' %}">Password Reset</a></p>
-<p><a href="{% url 'login' %}">Log In</a></p>
-<p><a href="{% url 'signup' %}">signup</a></p>
+<br>
+<br>
+<h1>Welcome to our capstone project!</h1>
 {% endif %}
-{% endblock %}
+{% endblock %}  

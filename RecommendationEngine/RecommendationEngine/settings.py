@@ -129,3 +129,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = "home"
 LOGOUT_REDIRECT_URL = "home"
 DISCOVER_REDIRECT_URL = "discover"
+NAVLOGIN_REDIRECT_URL = "logIn"
