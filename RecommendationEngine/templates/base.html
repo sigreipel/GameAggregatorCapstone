@@ -1,17 +1,38 @@
-<!-- templates/base.html -->
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <title>{% block title %}Django Auth Tutorial{% endblock %}</title>
+  <link rel="icon" href="data:,">
+
+  <!-- Link to the CSS stylesheet -->
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 
 <body>
+  <!-- Navigation bar -->
+  <nav>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">Discover</a></li>
+
+        {% if user.is_authenticated %}
+            <li><a href="/forYou">For You</a></li>
+            <li><a href="/profile">Profile</a></li>
+        {% else %}
+            <li><a href="/login">Login</a></li>
+            <li><a href="/signup">Sign Up</a></li>
+        {% endif %}
+    </ul>
+  </nav>
+
   <main>
     {% block content %}
     {% endblock %}
   </main>
 </body>
+</html>
+
 
 </html>

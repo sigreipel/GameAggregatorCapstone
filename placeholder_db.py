@@ -55,8 +55,10 @@ developersData = set(row[17] for row in data if row[17].strip())  # Unique dev n
 # devID, devName
 for dev in developersData:
     cur.execute("INSERT OR IGNORE INTO DEVS (devName) VALUES (?)", (dev,))
+con.commit()
+cur.execute("SELECT devID, devName FROM DEVS")
 devID_map = {name: devID for devID, name in cur.fetchall()}
-
+print(devID_map)
 
 gamesData = [(row[2], row[18], devID_map.get(row[17], None), "placeholder") for row in data]
 # gameID, gameName, genres, devID, gameImage

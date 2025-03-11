@@ -1,47 +1,44 @@
-/* initial style sheet for css stuff */
-
-/* containers */
-container {
-    background-color: white;
-}
-
-container2 {
-    background-color: #05648aff;
-}
-
-.topnav {
-    overflow: hidden;
-    background-color: #05648aff;
-}
-
-/* nav bar */
-.topnav a {
-    float: left;
-    display: block;
-    color: #e55812ff;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-/* headers */ 
-h1 {
-    color: #05648aff;
-}
-
-h2 {
-    color: #05648aff;
-}
-
-h3 {
-    color: #05648aff;
-}
-
-/* text */
-p {
-    color: #05648aff;
-}
-
 body {
-    background-color: #05648aff;
+    font-family: 'Open Sans', sans-serif;
 }
+
+h1 {
+    text-align: center;
+    color: #05648aff;
+}
+
+/* nav bar stuff */
+nav {
+    background-color: #05648aff;
+    overflow: hidden;
+    height: 100px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 1%;
+}
+
+nav ul li {
+    float: left;
+}
+
+nav ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: medium;
+}
+
+nav ul li a:hover {
+    background-color: rgb(4, 58, 80);
+}
+
+nav ul li a.active {
+    background-color: #e55812ff;
+}
+/* end navbar stuff */
