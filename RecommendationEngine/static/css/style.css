@@ -42,28 +42,28 @@ nav ul li a.active {
     background-color: #e55812ff;
 }
 /* end navbar stuff */
-
-/* container stuff */
-
-.content {
-    height: calc(100vh - 80px); /* 100vh minus height of the search bar */
-    overflow-y: auto; /* Allow scrolling */
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 20px;
     padding: 20px;
 }
 
-.container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 20px;
+/* News list container */
+.news-list-container {
+    grid-column: span 3; /* Make the news list container span across all columns */
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
 }
 
-.box {
+/* News item box */
+.news-item {
     background-color: lightblue;
     padding: 20px;
     border: 1px solid #ccc;
+    border-radius: 8px;
     text-align: center;
-    height: 150px; /* Set a fixed height for the boxes */
 }
-
 
 /* end container stuff */

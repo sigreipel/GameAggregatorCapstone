@@ -30,16 +30,19 @@
     <button type="submit">Search</button>
   </form>
   <br>
-  <div class="content">
-    <div class="container">
-      <div class="box">Container 1</div>
-      <div class="box">Container 2</div>
-      <div class="box">Container 3</div>
-      <div class="box">Container 4</div>
-      <div class="box">Container 5</div>
-      <div class="box">Container 6</div>
+  <div class="container">
+    <!-- News Listings -->
+    <div class="news-list-container">
+      <div class="container">
+          {% for i in 0..5 %}
+            <h1>Is this working?</h1>
+            <div class="news-item">
+                <h3>News Item {{ forloop.counter }}</h3>
+                <p>Some brief description of the news item.</p>
+            </div>
+          {% endfor %}      
+      </div>
     </div>
   </div>
-
 
 {% endblock %}
