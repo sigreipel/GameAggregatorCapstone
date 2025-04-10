@@ -25,4 +25,8 @@ urlpatterns = [
     path("", TemplateView.as_view(template_name="home.html"), name="home"),
     path("discover/", TemplateView.as_view(template_name="discover.html"), name="discover"),
     path("logIn/", TemplateView.as_view(template_name="login.html"), name="logIn"),
+    path("signUp/", TemplateView.as_view(template_name="signup.html"), name="signUp"),
+    path("forYou/", TemplateView.as_view(template_name="foryou.html"), name = "forYou"),
+    path("profile/", TemplateView.as_view(template_name="profile.html"), name = "profile"),
+
 ]
