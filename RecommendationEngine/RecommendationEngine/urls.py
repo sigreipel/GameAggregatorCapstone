@@ -29,4 +29,9 @@ urlpatterns = [
     path("forYou/", TemplateView.as_view(template_name="foryou.html"), name = "forYou"),
     path("profile/", TemplateView.as_view(template_name="profile.html"), name = "profile"),
 
+    # path('admin/', admin.site.urls),
+    # path("accounts/", include("accounts.urls")),
+    # path("accounts/", include("django.contrib.auth.urls")),
+    # path("", TemplateView.as_view(template_name="home.html"), name="home"),
+    # path("api/", include("accounts.urls"))
 ]
