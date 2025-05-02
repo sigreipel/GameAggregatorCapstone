@@ -5,6 +5,7 @@ import json
 import os
 
 
+
 def makeConnection(DB_PATH: str) -> tuple[sqlite3.Connection, sqlite3.Cursor]:
     #Connecting SQLire to the db
     con = sqlite3.connect(DB_PATH)
@@ -14,6 +15,7 @@ def makeConnection(DB_PATH: str) -> tuple[sqlite3.Connection, sqlite3.Cursor]:
 
 def createDB(cur: sqlite3.Cursor) -> None:
     #Creating the db
+    print("Creating db")
     cur.execute("""
         CREATE TABLE USERS(
             userID INTEGER PRIMARY KEY AUTOINCREMENT, 
@@ -54,12 +56,20 @@ def createDB(cur: sqlite3.Cursor) -> None:
             FOREIGN KEY (gameID) REFERENCES GAMES(gameID)
         )
     """)
+    print("db created")
 
 
 def populateDB(cur: sqlite3.Cursor, con: sqlite3.Connection) -> None:
     # TODO figure out how to get arrays into database. Will I need another table? for blocks/follows/genres
     #TODO split devs/genres/etc before making tables
-    data = list(csv.reader(open('game_info.csv')))[1:]
+    print("reading csv")
+    data = []
+    with open('game_info.csv', 'r', encoding='utf-8') as file:
+        csv_reader = csv.reader(file)
+        for row in csv_reader:
+            data.append(row)
+    # print(data[0])
+    # print(data[1])
 
     # Inserting Developers
     developersData = set(row[17] for row in data if row[17].strip())  # Unique dev names, Exclude empty values
@@ -96,8 +106,10 @@ def populateDB(cur: sqlite3.Cursor, con: sqlite3.Connection) -> None:
     con.commit()
 
 
-def debugDB(cur: sqlite3.Cursor) -> None:
+def debugDB(cur: sqlite3.Cursor, DEBUG_MODE: bool) -> None:
     #Debugging
+    if not DEBUG_MODE:
+        return
     for table in ["DEVS", "GAMES", "USERS", "NEWS"]:
         res = cur.execute(f"SELECT * FROM {table}")
         print(f"{table}:", res.fetchall())
@@ -118,14 +130,16 @@ def main():
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     DB_PATH = os.path.join(BASE_DIR, "placeholder.db")
 
+    DEBUG_MODE = False
     # csv_file = os.path.join(BASE_DIR, 'game_info.csv')
     if not os.path.exists(DB_PATH):
         con, cur = makeConnection(DB_PATH)
-        createDB(cur)
-        populateDB(cur, con)
-        debugDB(cur)
+        createDB(cur) # good
+        populateDB(cur, con) #not good
+        debugDB(cur, DEBUG_MODE)
 
 
 
 if __name__ == "__main__":
+
     main()

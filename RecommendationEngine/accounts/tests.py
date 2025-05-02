@@ -7,8 +7,26 @@ import os
 import sqlite3
 import RecommendationEngine.placeholder_db
 
+
 class AccountsTests(TestCase):
-    def test_signup_view(self):
+
+    @classmethod
+    def setUpTestData(cls):
+        print("Run once to setup static testing")
+        CustomUser.objects.create(email='testuser@example.com', password='thisisAsupersecurepassword2') #id=1
+        CustomUser.objects.create(username='testuser', email='testuser@gmail.com', password='StrongPass123!') #id=2
+        pass
+
+    def setUp(self):
+        print("Run once for every test method")
+        pass
+
+    def test_username_label(self):
+        username = CustomUser.objects.get(id=1)
+        field_name = username._meta.get_field('email').verbose_name
+        self.assertEqual(field_name, 'email')
+    
+    def test_signupapi_view(self):
         url = reverse('signup') # This is the /api/signup endpoint
 
         # Data to post into the sinup form
@@ -76,7 +94,7 @@ class AccountsTests(TestCase):
 
     # def test_get_devs(self):
     #     """Test that fetching developers returns a valid JSON response"""
-    #     response = self.client.get(reverse('get_devs'))
+    #     response = self.client.get(reverse('fetchAllDevelopers'))
     #     self.assertEqual(response.status_code, 200)
     #     self.assertIn('developers', response.json())
 
