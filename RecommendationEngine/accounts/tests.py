@@ -2,9 +2,10 @@ from django.test import TestCase, Client
 from django.urls import reverse
 from django.contrib.auth import get_user_model
 from accounts.models import CustomUser
-from RecommendationEngine import placeholder_db
+
 import os
 import sqlite3
+import RecommendationEngine.placeholder_db
 
 class AccountsTests(TestCase):
     def test_signup_view(self):
@@ -34,44 +35,44 @@ class AccountsTests(TestCase):
         except get_user_model().DoesNotExist:
             self.fail("User was not created")
 
-    def DBSetUp(self):
-        # path:
-        BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-        DB_PATH = os.path.join(BASE_DIR, 'placeholder.db')
+    # def DBSetUp(self):
+    #     # path:
+    #     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    #     DB_PATH = os.path.join(BASE_DIR, 'placeholder.db')
         
-        #connecting to the db
-        con = sqlite3.connect(DB_PATH)
-        cur = con.cursor()
+    #     #connecting to the db
+    #     con = sqlite3.connect(DB_PATH)
+    #     cur = con.cursor()
 
-        #Checking if the table exists
-        cur.execute("SELECT name FROM sqlite_master WHERE type='table';")
-        existing_tables = cur.fetchall()
+    #     #Checking if the table exists
+    #     cur.execute("SELECT name FROM sqlite_master WHERE type='table';")
+    #     existing_tables = cur.fetchall()
 
-        #List of expected tables
-        expected_tables = ['USERS', 'DEVS', 'GAMES', 'NEWS']
+    #     #List of expected tables
+    #     expected_tables = ['USERS', 'DEVS', 'GAMES', 'NEWS']
 
-        # Check for the existence of all expected tables
-        missing_tables = [table for table in expected_tables if (table,) not in existing_tables]
+    #     # Check for the existence of all expected tables
+    #     missing_tables = [table for table in expected_tables if (table,) not in existing_tables]
 
-        if missing_tables:
-            # If any tables are missing, create them
-            for table in missing_tables:
-                if table == 'USERS':
-                    # Create the USERS table
-                    self.create_users_table(cur)
-                elif table == 'DEVS':
-                    # Create the DEVS table
-                    self.create_devs_table(cur)
-                elif table == 'GAMES':
-                    # Create the GAMES table
-                    self.create_games_table(cur)
-                elif table == 'NEWS':
-                    # Create the NEWS table
-                    self.create_news_table(cur)
+    #     if missing_tables:
+    #         # If any tables are missing, create them
+    #         for table in missing_tables:
+    #             if table == 'USERS':
+    #                 # Create the USERS table
+    #                 self.create_users_table(cur)
+    #             elif table == 'DEVS':
+    #                 # Create the DEVS table
+    #                 self.create_devs_table(cur)
+    #             elif table == 'GAMES':
+    #                 # Create the GAMES table
+    #                 self.create_games_table(cur)
+    #             elif table == 'NEWS':
+    #                 # Create the NEWS table
+    #                 self.create_news_table(cur)
 
-            con.commit()
+    #         con.commit()
 
-        con.close
+    #     con.close
 
     # def test_get_devs(self):
     #     """Test that fetching developers returns a valid JSON response"""
