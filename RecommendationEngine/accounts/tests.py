@@ -14,7 +14,7 @@ class AccountsTests(TestCase):
     def setUpTestData(cls):
         print("Run once to setup static testing")
         CustomUser.objects.create(email='testuser@example.com', password='thisisAsupersecurepassword2') #id=1
-        CustomUser.objects.create(username='testuser', email='testuser@gmail.com', password='StrongPass123!') #id=2
+        CustomUser.objects.create(username='testuser', email='testuser@email.com', password='StrongPass123!') #id=2
         pass
 
     def setUp(self):
@@ -31,10 +31,10 @@ class AccountsTests(TestCase):
 
         # Data to post into the sinup form
         data = {
-            'username': 'testuser',
-            'email': 'testuser@email.com',
-            'password1': 'StrongPass123!',
-            'password2': 'StrongPass123!',
+            'username': 'apitestuser',
+            'email': 'apitestuser@email.com',
+            'password1': 'apiStrongPass123!',
+            'password2': 'apiStrongPass123!',
         }
 
         #Creating the post and calling data and url into it
@@ -43,13 +43,13 @@ class AccountsTests(TestCase):
         #Checking whether the response code is 302 (Redirect to accounts/login/)
         self.assertEqual(response.status_code, 302)
         print(response.status_code)
-        print(response.headers['Location'])
+        # print(response.headers['Location'])
 
         # Checking whether the user was created in the DB
         try:
-            user = get_user_model().objects.get(username='testuser')
+            user = get_user_model().objects.get(username='apitestuser')
             self.assertIsNotNone(user)
-            self.assertEqual(user.email, 'testuser@email.com')
+            self.assertEqual(user.email, 'apitestuser@email.com')
         except get_user_model().DoesNotExist:
             self.fail("User was not created")
 
