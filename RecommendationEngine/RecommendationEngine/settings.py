@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'RecommendationEngine.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / 'placeholder.db',
     }
 }
 
@@ -134,4 +134,5 @@ LOGOUT_REDIRECT_URL = "home"
 DISCOVER_REDIRECT_URL = "discover"
 FORYOU_REDIRECT_URL = "foryou"
 NAVLOGIN_REDIRECT_URL = "logIn"
+
 PROFILE_REDIRECT_URL = "profile"

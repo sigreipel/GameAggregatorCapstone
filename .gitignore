@@ -3,3 +3,4 @@ env/
 *.db
 *.csv
 *.sqlite3
+tests.py
