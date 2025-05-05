@@ -41,29 +41,4 @@ nav ul li a:hover {
 nav ul li a.active {
     background-color: #e55812ff;
 }
-/* end navbar stuff */
-.container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columns */
-    gap: 20px;
-    padding: 20px;
-}
 
-/* News list container */
-.news-list-container {
-    grid-column: span 3; /* Make the news list container span across all columns */
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-}
-
-/* News item box */
-.news-item {
-    background-color: lightblue;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    text-align: center;
-}
-
-/* end container stuff */
