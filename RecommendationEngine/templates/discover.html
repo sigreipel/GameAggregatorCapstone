@@ -22,26 +22,6 @@
     font-size: 16px;
     cursor: pointer;
   }
-
-  .news-item {
-    border-bottom: 1px solid #ccc;
-    padding: 15px 0;
-  }
-
-  .news-item:last-child {
-    border-bottom: none;
-  }
-
-  .news-item h3 {
-    font-size: 1.5em;
-    color: #e55812;
-    margin-bottom: 10px;
-  }
-
-  .news-item p {
-    font-size: 1em;
-    color: #333;
-  }
 </style>
 
 <form action="/search" method="get">
@@ -49,13 +29,15 @@
   <button type="submit">Search</button>
 </form>
 
-<div class="discover-container">
-  {% for i in range %}
-    <div class="news-item">
-      <h3>News Item {{ forloop.counter }}</h3>
-      <p>Some brief description of the news item.</p>
-    </div>
-  {% endfor %}
+<div class="discover-wrapper">
+  <div class="discover-container">
+    {% for i in range %}
+      <div class="news-item">
+        <h3>News Item {{ forloop.counter }}</h3>
+        <p>This is a sample description for news item {{ forloop.counter }}.</p>
+      </div>
+    {% endfor %}
+  </div>
 </div>
 
 {% endblock %}
