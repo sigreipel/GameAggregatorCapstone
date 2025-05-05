@@ -20,19 +20,8 @@
         {% if user.is_authenticated %}
             <li><a href="/forYou">For You</a></li>
             <li><a href="/profile">Profile</a></li>
-            <li>
-              <form action="{% url 'password_change' %}" method="post">
-                {% csrf_token %}
-                <button type="submit">Change Password</button>
-              </form>
-              <form action="{% url 'logout' %}" method="post">
-                {% csrf_token %}
-                <button type="submit">Log Out</button>
-              </form>
-            </li>
         {% else %}
             <li><a href="/logIn/">Log In</a></li>
-            <li><a href="/signUp/">Sign Up</a></li>
         {% endif %}
     </ul>
   </nav>

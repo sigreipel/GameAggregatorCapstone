@@ -7,7 +7,15 @@
 <br>
 <h2>Hi {{ user.username }}!</h2>
 <br>
+<li>
+    <form action="{% url 'password_change' %}" method="post">
+      {% csrf_token %}
+      <button type="submit">Change Password</button>
+    </form>
+    <form action="{% url 'logout' %}" method="post">
+      {% csrf_token %}
+      <button type="submit">Log Out</button>
+    </form>
+  </li>
 <br>
-<h1>Welcome to our capstone project!</h1>
-<p> more to be added later </p>
 {% endblock %}  

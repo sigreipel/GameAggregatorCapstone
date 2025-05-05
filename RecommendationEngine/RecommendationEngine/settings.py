@@ -25,7 +25,9 @@ SECRET_KEY = 'django-insecure-f%q(_s#(va2(%jyw*w-e13iqjbxcq^-0^=u1wuf&6#am^p5puk
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '18.209.65.117', 'git@github.com']
+ALLOWED_HOSTS = []
+
+
 
 
 # Application definition
@@ -132,5 +134,5 @@ LOGOUT_REDIRECT_URL = "home"
 DISCOVER_REDIRECT_URL = "discover"
 FORYOU_REDIRECT_URL = "foryou"
 NAVLOGIN_REDIRECT_URL = "logIn"
-NAVSIGNUP_REDIRECT_URL = "signUp"
+
 PROFILE_REDIRECT_URL = "profile"
