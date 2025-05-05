@@ -15,18 +15,27 @@ class SignUpView(CreateView):
 def get_devs(request):
     #API returns all developers in db in a json format
     try:
-        devs = placeholder_db.fetchAllDevelopers()
+        db_path = "placeholder.db"
+        con, cur = placeholder_db.makeConnection(db_path)
+        devs = placeholder_db.fetchAllDevelopers(cur)
+        con.close()
         return JsonResponse({'developers': devs})
     except Exception as e:
-        return JsonResponse({"error": str(e)}, status=500)
+        return JsonResponse({'error': str(e)}, status=500)
 def add_dev(request):
     #API to add a new developer
     if request.method == "POST":
         dev_name = request.POST.get("devName")
-        if dev_name:
-            try:
-                placeholder_db.createDeveloper([dev_name])
-                return JsonResponse({"message": "Developer added"}, status=201)
-            except Exception as e:
-                return JsonResponse({"error": str(e)}, status=500)
-        return JsonResponse({"error": "Invalid request"}, status=400)
+        if not dev_name:
+            return JsonResponse({'error': 'Developer name is required'}, status=400)
+        
+        try:
+            db_path = "placeholder.db"
+            con, cur = placeholder_db.makeConnection(db_path)
+            placeholder_db.createDeveloper(cur, con, dev_name)
+            con.close()
+            return JsonResponse({'message': 'Developer added successfully'}, status=201)
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=500)
+    
+    return JsonResponse({'error': 'Only POST method allowed'}, status=405)

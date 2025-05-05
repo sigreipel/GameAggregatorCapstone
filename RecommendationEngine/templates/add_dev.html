@@ -1,0 +1,14 @@
+<!-- templates/add_dev.html -->
+{% extends "base.html" %}
+
+{% block title %}Add Developer{% endblock %}
+
+{% block content %}
+<h2>Add a New Developer</h2>
+<form action="/accounts/add_devs/" method="post">
+  {% csrf_token %}
+  <label for="devName">Developer Name:</label>
+  <input type="text" id="devName" name="devName" required>
+  <button type="submit">Add Developer</button>
+</form>
+{% endblock %}

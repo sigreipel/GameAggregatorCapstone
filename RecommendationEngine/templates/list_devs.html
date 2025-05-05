@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Developer List{% endblock %}
+
+{% block content %}
+<h2>All Developers</h2>
+<ul>
+  {% for dev in developers %}
+    <li>ID {{ dev.devID }} — {{ dev.devName }}</li>
+  {% empty %}
+    <li>No developers found.</li>
+  {% endfor %}
+</ul>
+{% endblock %}
