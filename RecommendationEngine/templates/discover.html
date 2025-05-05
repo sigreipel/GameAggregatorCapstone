@@ -2,6 +2,12 @@
 {% block title %}Discover{% endblock %}
 
 {% block content %}
+
+<form action="/search" method="get">
+  <input type="text" name="query" placeholder="Search..." required>
+  <button type="submit">Search</button>
+</form>
+<br>
 <div class="discover-wrapper">
   <div class="discover-container">
     {% for i in range %}
