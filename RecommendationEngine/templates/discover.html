@@ -23,10 +23,10 @@
     cursor: pointer;
   }
 
-  .discover-container {
+  .discover-wrapper {
     max-width: 1000px;
     margin: 20px auto;
-    padding: 20px 30px;
+    padding: 20px;
     background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -44,7 +44,7 @@
 
   .news-item h3 {
     font-size: 1.5em;
-    color: #e55812ff;
+    color: #e55812;
     margin-bottom: 10px;
   }
 
@@ -52,20 +52,15 @@
     font-size: 1em;
     color: #333;
   }
-
 </style>
 
 <form action="/search" method="get">
   <input type="text" name="query" placeholder="Search..." required>
   <button type="submit">Search</button>
 </form>
-<br>
-<p>Template loaded!</p>
-<p>Range: {{ range }}</p>
 
-<div class="discover-container">
+<div class="discover-wrapper">
   {% for i in range %}
-    <h1>Is this working?</h1>
     <div class="news-item">
       <h3>News Item {{ forloop.counter }}</h3>
       <p>Some brief description of the news item.</p>
@@ -74,4 +69,5 @@
 </div>
 
 {% endblock %}
+
 
