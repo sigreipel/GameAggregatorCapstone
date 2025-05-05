@@ -23,12 +23,45 @@
     cursor: pointer;
   }
 
-  container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  /* Container Styles */
+  .container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px 30px;
+    background-color: #ffffff; /* Make sure background isn’t the same as body */
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    color: #222; /* Ensure text is visible */
   }
+
+  /* News List Container (optional if nested) */
+  .news-list-container {
+    margin-top: 20px;
+  }
+
+  /* News Item Styles */
+  .news-item {
+    border-bottom: 1px solid #ccc;
+    padding: 15px 0;
+  }
+
+  .news-item:last-child {
+    border-bottom: none;
+  }
+
+  /* Headings inside containers */
+  .news-item h3 {
+    font-size: 1.5em;
+    color: #0e402dff; /* Match your existing theme */
+    margin-bottom: 10px;
+  }
+
+  /* Paragraph text inside items */
+  .news-item p {
+    font-size: 1em;
+    color: #333;
+  }
+
 </style>
 
 <form action="/search" method="get">
