@@ -33,11 +33,6 @@ body {
     margin: 0 auto;
   }
 
-  form {
-    display: flex;
-    justify-content: center;
-    margin-top: 50px;
-  }
   
   .discover-wrapper {
     padding: 20px;
