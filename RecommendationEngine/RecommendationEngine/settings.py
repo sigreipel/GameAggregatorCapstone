@@ -28,6 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '18.209.65.117', 'git@github.com']
 
 
+
 # Application definition
 
 INSTALLED_APPS = [
