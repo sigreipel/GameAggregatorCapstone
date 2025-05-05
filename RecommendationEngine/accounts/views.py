@@ -13,6 +13,7 @@ class SignUpView(CreateView):
     
 
 def discover(request):
-    return render(request, 'discover.html', {'range': range(6)})
+    dummy_items = range(1, 6)  # This gives you 5 items
+    return render(request, 'discover.html', {'range': dummy_items})
 
 

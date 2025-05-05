@@ -1,74 +1,65 @@
-
-h1 {
-    text-align: center;
-    color: #05648aff;
-/* style.css additions */
-}
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
-}
-
-nav ul {
+  }
+  
+  nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
     background-color: #05648aff;
     display: flex;
-}
-
-nav ul li {
+  }
+  
+  nav ul li {
     padding: 14px 20px;
-}
-
-nav ul li a {
+  }
+  
+  nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
-}
-
-nav ul li a:hover {
-    text-decoration: underline;
+  }
+  
+  nav ul li a:hover {
     background-color: #e55812ff;
-}
-
-/* Give room under nav */
-main {
+    text-decoration: underline;
+  }
+  
+  main {
     padding: 100px 20px 20px;
     max-width: 1000px;
     margin: 0 auto;
-}
-
-.discover-wrapper {
-max-width: 1000px;
-margin: 0 auto;
-padding: 20px;
-}
-
-.discover-container {
-background: white;
-padding: 20px;
-border-radius: 10px;
-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.news-item {
-border-bottom: 1px solid #ddd;
-padding: 15px 0;
-}
-
-.news-item:last-child {
-border-bottom: none;
-}
-
-.news-item h3 {
-color: #05648aff;
-font-size: 1.2em;
-margin-bottom: 5px;
-}
-
-.news-item p {
-color: #333;
-}
-
+  }
+  
+  .discover-wrapper {
+    padding: 20px;
+  }
+  
+  .discover-container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .news-item {
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+  }
+  
+  .news-item:last-child {
+    border-bottom: none;
+  }
+  
+  .news-item h3 {
+    color: #05648aff;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+  }
+  
+  .news-item p {
+    color: #333;
+  }
+  
