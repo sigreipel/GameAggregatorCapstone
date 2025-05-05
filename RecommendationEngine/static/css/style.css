@@ -1,44 +1,50 @@
-body {
-    font-family: 'Open Sans', sans-serif;
-}
 
 h1 {
     text-align: center;
     color: #05648aff;
-}
+/* style.css additions */
 
-/* nav bar stuff */
-nav {
-    background-color: #05648aff;
-    overflow: hidden;
-    height: 100px;
-    font-family: 'Open Sans', sans-serif;
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
 }
 
 nav ul {
-    list-style-type: none;
-    margin: 1%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: #05648aff;
+    display: flex;
 }
 
 nav ul li {
-    float: left;
+    padding: 14px 20px;
 }
 
 nav ul li a {
-    display: block;
     color: white;
-    text-align: center;
-    padding: 14px 20px;
     text-decoration: none;
-    font-size: 30px;
-    font-weight: medium;
+    font-weight: bold;
 }
 
 nav ul li a:hover {
-    background-color: rgb(4, 58, 80);
+    text-decoration: underline;
+    background-color: #e55812ff;
 }
 
-nav ul li a.active {
-    background-color: #e55812ff;
+/* Give room under nav */
+main {
+    padding: 100px 20px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Fix container visuals */
+.discover-container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
