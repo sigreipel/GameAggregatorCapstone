@@ -23,23 +23,16 @@
     cursor: pointer;
   }
 
-  /* Container Styles */
-  .container {
+  .discover-container {
     max-width: 1000px;
     margin: 20px auto;
     padding: 20px 30px;
-    background-color: #ffffff; /* Make sure background isn’t the same as body */
+    background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    color: #222; /* Ensure text is visible */
+    color: #222;
   }
 
-  /* News List Container (optional if nested) */
-  .news-list-container {
-    margin-top: 20px;
-  }
-
-  /* News Item Styles */
   .news-item {
     border-bottom: 1px solid #ccc;
     padding: 15px 0;
@@ -49,14 +42,12 @@
     border-bottom: none;
   }
 
-  /* Headings inside containers */
   .news-item h3 {
     font-size: 1.5em;
-    color: #e55812ff; /* Match your existing theme */
+    color: #e55812ff;
     margin-bottom: 10px;
   }
 
-  /* Paragraph text inside items */
   .news-item p {
     font-size: 1em;
     color: #333;
@@ -70,18 +61,15 @@
 </form>
 <br>
 
-<div class="container">
-  <div class="news-list-container">
-    <div class="container">
-      {% for i in range %}
-        <h1>Is this working?</h1>
-        <div class="news-item">
-          <h3>News Item {{ forloop.counter }}</h3>
-          <p>Some brief description of the news item.</p>
-        </div>
-      {% endfor %}
+<div class="discover-container">
+  {% for i in range %}
+    <h1>Is this working?</h1>
+    <div class="news-item">
+      <h3>News Item {{ forloop.counter }}</h3>
+      <p>Some brief description of the news item.</p>
     </div>
-  </div>
+  {% endfor %}
 </div>
 
 {% endblock %}
+

@@ -13,6 +13,6 @@ class SignUpView(CreateView):
     
 
 def discover(request):
-    return render(request, 'discover.html', {'range': range(1, 11)})
+    return render(request, 'discover.html', {'range': range(6)})
 
 
