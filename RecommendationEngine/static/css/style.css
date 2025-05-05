@@ -1,69 +1,66 @@
 body {
-    font-family: 'Open Sans', sans-serif;
-}
-
-h1 {
-    text-align: center;
-    color: #05648aff;
-}
-
-/* nav bar stuff */
-nav {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+  }
+  
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
     background-color: #05648aff;
-    overflow: hidden;
-    height: 100px;
-    font-family: 'Open Sans', sans-serif;
-}
-
-nav ul {
-    list-style-type: none;
-    margin: 1%;
-}
-
-nav ul li {
-    float: left;
-}
-
-nav ul li a {
-    display: block;
-    color: white;
-    text-align: center;
+    display: flex;
+  }
+  
+  nav ul li {
     padding: 14px 20px;
+  }
+  
+  nav ul li a {
+    color: white;
     text-decoration: none;
-    font-size: 30px;
-    font-weight: medium;
-}
-
-nav ul li a:hover {
-    background-color: rgb(4, 58, 80);
-}
-
-nav ul li a.active {
+    font-weight: bold;
+  }
+  
+  nav ul li a:hover {
     background-color: #e55812ff;
-}
-/* end navbar stuff */
-.container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columns */
-    gap: 20px;
-    padding: 20px;
-}
+    text-decoration: underline;
+  }
+  
+  main {
+    padding: 100px 20px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
 
-/* News list container */
-.news-list-container {
-    grid-column: span 3; /* Make the news list container span across all columns */
+  
+  .discover-wrapper {
     padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-}
-
-/* News item box */
-.news-item {
-    background-color: lightblue;
+  }
+  
+  .discover-container {
+    background: white;
     padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    text-align: center;
-}
-
-/* end container stuff */
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .news-item {
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+  }
+  
+  .news-item:last-child {
+    border-bottom: none;
+  }
+  
+  .news-item h3 {
+    color: #05648aff;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+  }
+  
+  .news-item p {
+    color: #333;
+  }
+  
