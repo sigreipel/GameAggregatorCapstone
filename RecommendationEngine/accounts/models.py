@@ -1,6 +1,6 @@
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, User
 from django.db import models
-
+import json
 
 class CustomUser(AbstractUser):
     email = models.EmailField(unique=True)  # Ensure uniqueness
@@ -20,3 +20,28 @@ class CustomUser(AbstractUser):
         blank=True,
         help_text="Specific permissions for this user.",
     )
+
+    blockedDevs = models.TextField(default="[]")  # JSON string (list of dev IDs)
+    followedDevs = models.TextField(default="[]")
+    blockedGames = models.TextField(default="[]")
+    followedGames = models.TextField(default="[]")
+
+    def get_blocked_devs(self):
+        return json.loads(self.blockedDevs)
+
+    def get_followed_games(self):
+        return json.loads(self.followedGames)
+    
+class Developer(models.Model):
+    devName = models.CharField(max_length=100, unique=True)
+
+class Game(models.Model):
+    gameName = models.CharField(max_length=255)
+    genres = models.TextField(default="[]")  # JSON string for multiple genres
+    dev = models.ForeignKey(Developer, on_delete=models.CASCADE)
+    gameImage = models.TextField(default="placeholder")
+
+class News(models.Model):
+    newsTitle = models.CharField(max_length=255)
+    newsContent = models.TextField()
+    game = models.ForeignKey(Game, on_delete=models.CASCADE)
