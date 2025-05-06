@@ -22,20 +22,3 @@ def get_devs(request):
         return JsonResponse({'developers': devs})
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
-# def add_dev(request):
-#     #API to add a new developer
-#     if request.method == "POST":
-#         dev_name = request.POST.get("devName")
-#         if not dev_name:
-#             return JsonResponse({'error': 'Developer name is required'}, status=400)
-        
-#         try:
-#             db_path = "placeholder.db"
-#             con, cur = placeholder_db.makeConnection(db_path)
-#             placeholder_db.createDeveloper(cur, con, dev_name)
-#             con.close()
-#             return JsonResponse({'message': 'Developer added successfully'}, status=201)
-#         except Exception as e:
-#             return JsonResponse({'error': str(e)}, status=500)
-    
-#     return JsonResponse({'error': 'Only POST method allowed'}, status=405)
