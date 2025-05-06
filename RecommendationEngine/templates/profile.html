@@ -7,7 +7,7 @@
 <br>
 <h2>Hi {{ user.username }}!</h2>
 <br>
-<li>
+  <div>
     <form action="{% url 'password_change' %}" method="post">
       {% csrf_token %}
       <button type="submit">Change Password</button>
@@ -16,6 +16,6 @@
       {% csrf_token %}
       <button type="submit">Log Out</button>
     </form>
-  </li>
+  </div>
 <br>
 {% endblock %}  
