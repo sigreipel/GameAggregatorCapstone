@@ -6,6 +6,7 @@ from .forms import CustomUserCreationForm
 from .models import CustomUser
 from django.http import JsonResponse
 from RecommendationEngine import placeholder_db
+from django.shortcuts import render
 
 class SignUpView(CreateView):
     form_class = CustomUserCreationForm
@@ -30,3 +31,7 @@ def add_dev(request):
             except Exception as e:
                 return JsonResponse({"error": str(e)}, status=500)
         return JsonResponse({"error": "Invalid request"}, status=400)
+
+def discover(request):
+    dummy_items = range(5)  # This gives you 5 items
+    return render(request, 'discover.html', {'range': dummy_items})

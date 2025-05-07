@@ -1,48 +1,39 @@
 {% extends "base.html" %}
-
 {% block title %}Discover{% endblock %}
 
 {% block content %}
 
 <style>
-    
-    form {
-      display: flex;
-      justify-content: center;
-      margin-top: 50px;
-    }
-  
-    input[type="text"] {
-      padding: 8px;
-      font-size: 16px;
-      width: 200px;
-    }
-  
-    button {
-      padding: 8px 16px;
-      font-size: 16px;
-      cursor: pointer; }
+  form {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+  }
+  input[type="text"] {
+    padding: 8px;
+    font-size: 16px;
+    width: 200px;
+  }
+  button {
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+</style>
 
-  </style>
-  
-  <form action="/search" method="get">
-    <input type="text" name="query" placeholder="Search..." required>
-    <button type="submit">Search</button>
-  </form>
-  <br>
-  <div class="container">
-    <!-- News Listings -->
-    <div class="news-list-container">
-      <div class="container">
-          {% for i in 0..5 %}
-            <h1>Is this working?</h1>
-            <div class="news-item">
-                <h3>News Item {{ forloop.counter }}</h3>
-                <p>Some brief description of the news item.</p>
-            </div>
-          {% endfor %}      
+<form action="/search" method="get">
+  <input type="text" name="query" placeholder="Search..." required>
+  <button type="submit">Search</button>
+</form>
+<br>
+<div class="discover-wrapper">
+  <div class="discover-container">
+    {% for i in range %}
+      <div class="news-item">
+        <h3>News Item {{ forloop.counter }}</h3>
+        <p>This is a sample description for news item {{ forloop.counter }}.</p>
       </div>
-    </div>
+    {% endfor %}
   </div>
-
+</div>
 {% endblock %}
