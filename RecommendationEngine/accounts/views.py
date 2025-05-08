@@ -2,14 +2,14 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
-from .forms import CustomUserCreationForm
-from .models import CustomUser
 from django.http import JsonResponse
-from RecommendationEngine import placeholder_db
 from django.shortcuts import render
+from .models import CustomUser
+from .forms import CustomUserCreationForm
+from RecommendationEngine import placeholder_db
 import json
 import os
-from django.conf import settings
+
 
 class SignUpView(CreateView):
     form_class = CustomUserCreationForm
