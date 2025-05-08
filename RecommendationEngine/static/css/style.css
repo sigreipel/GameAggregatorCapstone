@@ -9,6 +9,44 @@ body {
     color: #05648aff;
     margin-top: 20px;
   }
+
+/* General page layout */
+h1 {
+  text-align: justify;
+  color: #05648aff;
+  margin-top: 20px;
+}
+
+/* Search form */
+form {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+input[type="text"] {
+  padding: 8px;
+  font-size: 16px;
+  width: 250px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #05648aff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 16px;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #e55812ff;
+}
   
   nav ul {
     list-style: none;
