@@ -7,6 +7,9 @@ from .models import CustomUser
 from django.http import JsonResponse
 from RecommendationEngine import placeholder_db
 from django.shortcuts import render
+import json
+import os
+from django.conf import settings
 
 class SignUpView(CreateView):
     form_class = CustomUserCreationForm
@@ -33,5 +36,26 @@ def add_dev(request):
         return JsonResponse({"error": "Invalid request"}, status=400)
 
 def discover(request):
-    dummy_items = range(5)  # This gives you 5 items
-    return render(request, 'discover.html', {'range': dummy_items})
+    query = request.GET.get('query', '').lower()
+
+    # Load the JSON data from file
+    base_dir = os.path.dirname(os.path.abspath(__file__))  # adjust if needed
+    json_path = os.path.join(base_dir, 'data/articles.json')
+
+    with open(json_path, 'r', encoding='utf-8') as file:
+        data = json.load(file)
+
+    articles = data.get("articles", [])
+
+    # Filter articles if there's a search query
+    if query:
+        articles = [
+            article for article in articles
+            if query in article.get("title", "").lower() or query in article.get("description", "").lower()
+        ]
+
+    # Pass 'articles' and 'query' into the template context
+    return render(request, 'discover.html', {
+        'articles': articles,
+        'query': query
+    })
