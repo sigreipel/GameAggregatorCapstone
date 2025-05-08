@@ -3,6 +3,12 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
   }
+
+  h1 {
+    text-align: justify;
+    color: #05648aff;
+    margin-top: 20px;
+  }
   
   nav ul {
     list-style: none;

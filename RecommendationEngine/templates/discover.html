@@ -3,37 +3,35 @@
 
 {% block content %}
 
+<h1>Discover News</h1>
+
 <style>
-  form {
-    display: flex;
-    justify-content: center;
-    margin-top: 50px;
-  }
-  input[type="text"] {
-    padding: 8px;
-    font-size: 16px;
-    width: 200px;
-  }
-  button {
-    padding: 8px 16px;
-    font-size: 16px;
-    cursor: pointer;
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
   }
 </style>
 
-<form action="/search" method="get">
-  <input type="text" name="query" placeholder="Search..." required>
-  <button type="submit">Search</button>
+<form method="get" action="{% url 'discover' %}" style="text-align: center; margin-bottom: 30px;">
+  <input type="text" name="query" value="{{ query }}" placeholder="Search articles..." style="padding: 8px; width: 250px;">
+  <button type="submit" style="padding: 8px;">Search</button>
 </form>
-<br>
-<div class="discover-wrapper">
-  <div class="discover-container">
-    {% for i in range %}
+
+<div class="discover-container">
+  {% if articles %}
+    {% for article in articles %}
       <div class="news-item">
-        <h3>News Item {{ forloop.counter }}</h3>
-        <p>This is a sample description for news item {{ forloop.counter }}.</p>
+        <img src="{{ article.image }}" alt="{{ article.title }}" style="max-width:100%; height:auto;">
+        <h3><a href="{{ article.url }}" target="_blank">{{ article.title }}</a></h3>
+        <p>{{ article.description }}</p>
+        <p><em>By {{ article.author }}</em></p>
       </div>
     {% endfor %}
-  </div>
+  {% else %}
+    <p>No articles found.</p>
+  {% endif %}
 </div>
+
 {% endblock %}
+
+  
