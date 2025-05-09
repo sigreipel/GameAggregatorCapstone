@@ -5,12 +5,44 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-<br>
-<br>
 <h1>Hi {{ user.username }}!</h1>
+<br>
+<div class="discover-container">
+  {% if article %}
+    <div class="news-item">
+      <h3>{{ article.title }}</h3>
+      <p><em>By {{ article.author }}</em></p>
+      {% if article.image %}
+        <img src="{{ article.image }}" alt="Article image" class="article-img">
+      {% endif %}
+      <p>{{ article.description }}</p>
+      <a href="{{ article.url }}" target="_blank">Read more</a>
+    </div>
+  {% else %}
+    <p>No article available right now.</p>
+  {% endif %}
+</div>
+
 {% else %}
+<h1>Random Article</h1>
 <br>
 <br>
-<p>feel free to explore the site</p>
+<div class="discover-container">
+  {% if article %}
+    <div class="news-item">
+      <h3>{{ article.title }}</h3>
+      <p><em>By {{ article.author }}</em></p>
+      {% if article.image %}
+        <img src="{{ article.image }}" alt="Article image" class="article-img">
+      {% endif %}
+      <p>{{ article.description }}</p>
+      <a href="{{ article.url }}" target="_blank">Read more</a>
+    </div>
+  {% else %}
+    <p>No article available right now.</p>
+  {% endif %}
+</div>
+
+</div>
 {% endif %}
 {% endblock %}  

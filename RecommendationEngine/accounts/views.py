@@ -9,6 +9,7 @@ from .forms import CustomUserCreationForm
 from RecommendationEngine import placeholder_db
 import json
 import os
+import random
 
 
 class SignUpView(CreateView):
@@ -59,3 +60,14 @@ def discover(request):
         'articles': articles,
         'query': query
     })
+    
+def home_view(request):
+    # Load the JSON data from file
+    base_dir = os.path.dirname(os.path.abspath(__file__))  # adjust if needed
+    json_path = os.path.join(base_dir, 'data/articles.json')
+
+    with open(json_path, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+    articles = data.get('articles', [])
+    article = random.choice(articles) if articles else None
+    return render(request, 'home.html', {'article': article})
