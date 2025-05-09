@@ -5,49 +5,34 @@ body {
   }
 
   h1 {
-    text-align: justify;
-    color: #05648aff;
+    text-align: center;
+    color: rgb(0, 0, 0);
     margin-top: 20px;
+    font-size: 40px;
+    font-weight: heavy;
+    text-shadow: 3px 3px 6px #e55812ff;
+    font-family: 'IMPACT', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
   }
 
 /* General page layout */
-h1 {
-  text-align: justify;
+h2 {
   color: #05648aff;
-  margin-top: 20px;
 }
 
-/* Search form */
-form {
-  display: flex;
-  justify-content: center;
-  margin: 30px 0;
+h3 {
+  color: #05648aff;
+  margin-top: 10px;
+  text-align: justify;
 }
 
-input[type="text"] {
-  padding: 8px;
-  font-size: 16px;
-  width: 250px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+p {
+  color: #333;
+  line-height: 1.6;
+  margin: 10px 0;
 }
 
-button {
-  background-color: #05648aff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 8px 16px;
-  font-size: 16px;
-  margin-left: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #e55812ff;
-}
-  
   nav ul {
     list-style: none;
     margin: 0;
@@ -57,18 +42,19 @@ button:hover {
   }
   
   nav ul li {
-    padding: 14px 20px;
+    padding: 20px 25px; /* Increase top-bottom padding for thicker feel */
   }
   
   nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
+    font-size: 1.1em;
   }
   
   nav ul li a:hover {
     background-color: #e55812ff;
-    text-decoration: underline;
+    text-decoration: italic;
   }
   
   main {
@@ -105,6 +91,51 @@ button:hover {
   }
   
   .news-item p {
+    color: #333;
+  }
+
+.article-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+.news-item a {
+  color: #05648aff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.news-item a:hover {
+  text-decoration: underline;
+  color: #e55812ff;
+}
+
+  .recommendation-container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+  }
+  
+  .recommendation-item {
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+  }
+  
+  .recommendation-item:last-child {
+    border-bottom: none;
+  }
+  
+  .recommendation-item h3 {
+    color: #05648aff;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+  }
+  
+  .recommendation-item p {
     color: #333;
   }
   
